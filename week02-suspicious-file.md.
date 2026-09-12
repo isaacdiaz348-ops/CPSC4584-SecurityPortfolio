@@ -1,0 +1,42 @@
+# Week 2: Suspicious File on a Nurse's Workstation
+**Course:** CPSC 4584 | Special Topics in Information Security
+**Date:** September 7, 2026
+**Analyst:** [Your Name]
+**Incident ID:** INC-2026-0907-001
+
+---
+
+## Incident Summary
+
+[One to two sentences describing what was found and where.]
+
+---
+
+## Key Findings
+
+**Permission Finding:** [What the permission string told you.]
+**File Type Finding:** [What the file command revealed.]
+**Timestamp Finding:** [What stat showed about the file's age and metadata.]
+**Strings Finding:** [What readable content, if any, appeared in the binary.]
+
+---
+
+## Terminal Commands Used
+
+| Command | Purpose |
+|---------|---------|
+| pwd && ls -la | [Explain what this command helped you verify.] |
+| file [filename] | [Explain what this command helped you verify.] |
+| stat [filename] | [Explain what metadata this command provided.] |
+| strings [filename] | [Explain what clues this command exposed.] |
+| find . -mtime -1 -type f | [Explain what this search helped you identify.] |
+
+---
+
+## Escalation Recommendation
+
+[State whether you would escalate, identify the strongest evidence, and note at least one question that still requires Tier 2 investigation.]
+
+---
+*CPSC 4584 | Governors State University | Fall 2026*
+    
