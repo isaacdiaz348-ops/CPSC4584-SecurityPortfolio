@@ -1,7 +1,7 @@
 # Week 2: Suspicious File on a Nurse's Workstation
 **Course:** CPSC 4584 | Special Topics in Information Security
 **Date:** September 7, 2026
-**Analyst:** [Your Name]
+**Analyst:** [Isaac Diaz]
 **Incident ID:** INC-2026-0907-001
 
 ---
@@ -9,15 +9,19 @@
 ## Incident Summary
 
 [One to two sentences describing what was found and where.]
+In this incident, the Maplewood SOC monitoring system generated an alert for an unexpected file modification on MHS-C3-NRS-07.
+The alert was triggered at 6:45am. A file named "patient_notes.txt' appeared in the home directory of the workstation's user account
+at 3:14am. Attached to the file is an "execute" permission bit set which is unusual for a ".txt" file and needs to be investigated further.
 
 ---
 
 ## Key Findings
 
-**Permission Finding:** [What the permission string told you.]
-**File Type Finding:** [What the file command revealed.]
-**Timestamp Finding:** [What stat showed about the file's age and metadata.]
-**Strings Finding:** [What readable content, if any, appeared in the binary.]
+**Permission Finding:** [The permission finding told us that the file could be executed. This is a concern because the file can be disguised
+as a script or code.]
+**File Type Finding:** [The file type shows us that it is a common ".txt" file or plain text document.]
+**Timestamp Finding:** [The "Change" timestamp tells us that the file appeared at 3:14am. ]
+**Strings Finding:** [There was no readable data. ]
 
 ---
 
@@ -25,17 +29,25 @@
 
 | Command | Purpose |
 |---------|---------|
-| pwd && ls -la | [Explain what this command helped you verify.] |
-| file [filename] | [Explain what this command helped you verify.] |
-| stat [filename] | [Explain what metadata this command provided.] |
-| strings [filename] | [Explain what clues this command exposed.] |
-| find . -mtime -1 -type f | [Explain what this search helped you identify.] |
+| pwd && ls -la | [Explain what this command helped you verify.] | This command helps us verify the directory, list names in the current
+directory, and shows hidden files, permissions, owners, and timestamps. 
+| file [filename] | [Explain what this command helped you verify.] | This command determines the type of file by examining it's data.
+| stat [filename] | [Explain what metadata this command provided.] | Detailed low-level metadata and statistics
+about a specific file or file system. 
+| strings [filename] | [Explain what clues this command exposed.] | The clues that this command can expose are the program's functionality,
+origins, and internal logic. 
+| find . -mtime -1 -type f | [Explain what this search helped you identify.] | This search helps us identify what files were modified in the
+past 24 hours. 
 
 ---
 
 ## Escalation Recommendation
 
 [State whether you would escalate, identify the strongest evidence, and note at least one question that still requires Tier 2 investigation.]
+
+I would most definitley escalate this finding to a Tier 2 and the strongest evidence that supports this decision is the "patient_notes.txt" file
+having an execute permission bit. It could potentially be disguised as something more malicious. One question that requires Tier 2 investigation 
+is "Is the file disguised as something else, if so what is in that file?" 
 
 ---
 *CPSC 4584 | Governors State University | Fall 2026*
